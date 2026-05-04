@@ -1,0 +1,164 @@
+*{
+    box-sizing: border-box;
+}
+
+body{
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #262626;
+    color: #d9d9d9;
+    padding: 20px;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+}
+
+main{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+header{
+    text-align: center;
+}
+
+header > h1{
+    font-size: 1.25rem;
+    font-weight: 500;
+    color: #f9f4da;
+}
+
+header > p{
+    font-size: 0.875rem;
+    max-width: 350px;
+    color: #acacac;
+}
+
+section.game-stat{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: #f9f4da;
+    border-radius: 4px;
+    margin-block: 20px;
+    width: 350px;
+    height: 60px;
+}
+
+section.won{
+    background-color: #10a95b;
+}
+
+section.lost{
+    background-color: #Ba2a2a;
+}
+
+section.farewell{
+    background-color: #7605d3;
+    outline: 1px dashed #7605d3;
+}
+
+section.game-stat > h2{
+    font-size: 1.25rem;
+    margin: 5px;
+}
+
+section.game-stat > p{
+    margin: 5px;
+}
+
+.list-sec{
+    display: flex;
+    max-width:350px;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: -15px;
+    margin-bottom: 30px;
+    margin-block: 10px;
+}
+
+p.lang{
+    margin: 0 5px 5px 0;
+    padding: 5px 8px;
+    border-radius: 3px;
+    position: relative;
+}
+
+p.lang.lost::before{
+    content: "X";
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+    font-size: 0.85rem;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0,0.7);
+}
+
+section.word{
+    display: flex;
+    justify-content: center;
+    gap: 2px;
+}
+
+section.word > span{
+    background-color: #323232;
+    height: 40px;
+    width: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 1px solid #f9f4da;
+    margin-bottom: 30px;
+}
+
+section.alphabet-display{
+    max-width: 450px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 5px;
+    margin-bottom: 30px;
+}
+
+section.alphabet-display > button.btn{
+    border: 1px solid #f9f4da;
+    background-color: #FFD742;
+    width: 35px;
+    height: 35px;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+
+button.new-game{
+    width: 250px;
+    height: 35px;
+    border: none;
+    background-color: #298EC6;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+
+section.alphabet-display > button.right{
+    background-color: #10a95b;
+}
+
+section.alphabet-display > button.wrong{
+    background-color: #D02B2B;
+}
+
+
+section.alphabet-display > button:disabled{
+    cursor: auto;
+}
+
+section.word > span.incorrect{
+    background-color: #D02B2B;
+}
