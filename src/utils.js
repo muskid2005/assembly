@@ -2,7 +2,7 @@ import { words } from "./word.js";
 
 export function randomWord() {
   const randomIndex = Math.floor(Math.random() * words.length);
-  return words[randomIndex];
+  return { word: words[randomIndex].word, hint: words[randomIndex].hint };
 }
 
 export function getFarewellText(language) {

@@ -10,15 +10,16 @@ export default function App(){
     const [currentWord, setCurrentWord] = useState(()=>randomWord())
     const [guessedLetter, setGuessedLetter] = useState([])
 
-    const wrongGuessCount = guessedLetter.filter(x => !currentWord.includes(x)).length
+    const wrongGuessCount = guessedLetter.filter(x => !currentWord.word.includes(x)).length
     const isGameOver = wrongGuessCount >= languages.length-1
-    const isGameWon = currentWord.split('').every(x=> guessedLetter.includes(x))
+    const isGameWon = currentWord.word.split('').every(x=> guessedLetter.includes(x))
     let isFarewell
     const condition = wrongGuessCount > 0 ? wrongGuessCount-1 : 0   
     const lastGuess = guessedLetter[guessedLetter.length-1]
-    const isLastGuessWrong = !isGameOver && lastGuess && !currentWord.includes(lastGuess)
+    const isLastGuessWrong = !isGameOver && lastGuess && !currentWord.word.includes(lastGuess)
 
     const alphabet = "abcdefghijklmnopqrstuvwxyz"
+
 
     const Languages = languages.map((x, index)=> {
        const isLost = wrongGuessCount > index
@@ -32,7 +33,7 @@ export default function App(){
 
     
 
-    const letterElements = currentWord.split('').map((x, index)=>{
+    const letterElements = currentWord.word.split('').map((x, index)=>{
         const isfailedLetter = isGameOver && !guessedLetter.includes(x)
         return(
         <span className={clsx('letters', isfailedLetter && 'incorrect')} key={index}>{guessedLetter.includes(x) ? x.toUpperCase() : "" || isGameOver ? x.toUpperCase() : ""}</span>
@@ -40,8 +41,8 @@ export default function App(){
 })
    
     const keyboardElements = alphabet.split('').map((x,index)=> {
-        const isRight = currentWord.split('').includes(x) && guessedLetter.includes(x)
-        const isWrong = !currentWord.split('').includes(x) && guessedLetter.includes(x)
+        const isRight = currentWord.word.split('').includes(x) && guessedLetter.includes(x)
+        const isWrong = !currentWord.word.split('').includes(x) && guessedLetter.includes(x)
 
         return(
     <button disabled={isGameOver || isGameWon} className={clsx('btn', isRight && 'right', isWrong && 'wrong')} 
@@ -83,7 +84,7 @@ export default function App(){
                  : isLastGuessWrong ? <p>{getFarewellText(languages[wrongGuessCount-1].name)}</p> : ''
                 }
             </section>
-
+                <p className="hint">{`Hint: ${currentWord.hint}`}</p>
             <section className="list-sec">
                 {Languages}
             </section>
